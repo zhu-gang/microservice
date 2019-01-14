@@ -1,0 +1,43 @@
+########################################################
+#                       Tomcat
+########################################################
+server:
+  port: 19001
+  tomcat:
+    uri-encoding: UTF-8
+  
+servlet:
+  servlet:
+    path: /microservice-reception
+    
+spring:
+  application:
+    name: microservicecloud-reception 
+    
+    
+
+########################################################
+#                     logging
+########################################################
+logging:
+  path: ../log   
+  pattern:
+    console: "%d{yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+    file: "%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n"
+    level:  DEBUG 
+    
+    
+    
+#feign: 
+#  hystrix: 
+ #   enabled: true
+  
+eureka:
+  client:
+    #register-with-eureka: false
+    service-url: 
+     defaultZone: http://localhost:7001/eureka/
+    instance:
+     instance-id: reception   #自定义服务名称信息
+     prefer-ip-address: true     #访问路径可以显示IP地址
+    
