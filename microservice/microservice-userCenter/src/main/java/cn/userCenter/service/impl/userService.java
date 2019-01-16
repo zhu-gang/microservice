@@ -55,6 +55,20 @@ public class userService implements UserServiceInter{
 	}
 	
 	
+	
+	 /**   
+	  * @Title: getUserOrganByUsernum   
+	  * @Description: 根据用户唯一标示num查询用户        
+	  * @return:         
+	  */  
+	@Override
+	public UserOrganization getUserOrganByUsernum( int usernum ) {
+		UserOrganization user = userMapper.findUserByUsernum(usernum);
+		return user;
+	}
+	
+	
+	
 	 /**   
 	  * @Title: getUserInfoByUserId   
 	  * @Description: 根据用户唯一标示usernum查询用户信息             
@@ -77,8 +91,18 @@ public class userService implements UserServiceInter{
 		List<UserRole> userRoles = userRoleMapper.findUserRoleByUserId(userid);
 		return userRoles;
 	}
-
 	
+	
+	 /**   
+	  * @Title: saveUserServ   
+	  * @Description: 新增用户       
+	  * @return: int        
+	  */  
+	@Override
+	public int saveUserServ(UserOrganization user) {
+		
+		return 0;
+	}
 
 	
 	

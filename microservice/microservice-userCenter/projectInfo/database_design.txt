@@ -15,7 +15,7 @@
  //用户管理系统数据库设计
  1.用户信息基础表
 	create table `user_info`(
-		`userid` int primary key  auto_increment ,			
+		`userid` int primary key ,			
 		`nname` varchar(16) not null default '' comment '用户昵称',
 		`age` smallint not null default 0 comment '用户年龄',
 		`sex` tinyint not null default 0 comment '用户性别,0-男 1-女',
@@ -122,20 +122,31 @@
  /*
   * 模拟数据
   */
-  王者荣耀
-  	射手
+  王者荣耀    0
+  	射手    1
   		后羿           1
   		伽罗           2
   		小短腿       3
-  	法师
+  		虞姬           4
+  		孙尚香       5
+  		马可波罗   6
+  		
+  	法师    2
   		甄姬           101
   		王昭君       102
   		妲己           103
-  	辅助
+  		上官婉儿   104
+  		诸葛亮       105
+  		貂蝉           106
+  		
+  	辅助   3
   		刘禅           1001
   		明世隐       1002
   		牛魔           1003
-  	坦克
+  		姜子牙       1004
+  		
+  	坦克   4
   		东皇太一    10001
   		程咬金        10002
   		项羽            10003
+  		廉颇            10004

@@ -1,6 +1,8 @@
 cn\zg\springcloud\service\DeptClientService.class
 cn\zg\springcloud\entities\userCenter\UserInfo.class
 cn\zg\springcloud\service\DeptClientServiceFallbackFactory$1.class
+cn\zg\springcloud\entities\userCenter\UserAuthority.class
 cn\zg\springcloud\entities\userCenter\UserOrganization.class
 cn\zg\springcloud\entities\Dept.class
+cn\zg\springcloud\entities\userCenter\UserRole.class
 cn\zg\springcloud\service\DeptClientServiceFallbackFactory.class

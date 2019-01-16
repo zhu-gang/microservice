@@ -13,6 +13,10 @@ package cn.zg.springcloud.entities.userCenter;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.validation.annotation.Validated;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,11 +35,25 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Data
 @Accessors( chain=true )
+@Validated
 public class UserOrganization implements Serializable{
+	
+	/**   
+	 * @Fields serialVersionUID : 序列化   
+	 */  
+	private static final long serialVersionUID = 1L;
+	
 	private Integer orgid;
+	
+	@NotBlank(message="用户名不能为空")
 	private String name;
+	
 	private Integer parent_id;
+	
+	@NotBlank(message="用户标识不能为空")
 	private Integer usernum;
+	
+	@NotBlank(message="用户密码不能为空")
 	private String user_password;
 	private Integer is_parent;
 	private String note;

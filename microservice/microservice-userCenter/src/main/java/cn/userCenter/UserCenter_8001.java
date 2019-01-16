@@ -33,5 +33,4 @@ public class UserCenter_8001 {
 		// TODO Auto-generated method stub
 		 SpringApplication.run(UserCenter_8001.class, args);
 	}
-
 }

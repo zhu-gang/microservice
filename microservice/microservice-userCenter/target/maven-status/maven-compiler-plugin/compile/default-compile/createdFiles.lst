@@ -1,2 +1,13 @@
-cn\userCenter\dao\UserMapper.class
+cn\userCenter\config\shiro\MyShiroRealm.class
+cn\userCenter\dao\UserRoleMapper.class
+cn\userCenter\service\impl\userService.class
 cn\userCenter\UserCenter_8001.class
+cn\userCenter\controller\ApplicationApi.class
+cn\userCenter\service\inter\UserServiceInter.class
+cn\userCenter\Entity\headResult\ApiJson.class
+cn\userCenter\dao\UserInfoMapper.class
+cn\userCenter\dao\UserAuthMapper.class
+cn\userCenter\controller\LoginController.class
+cn\userCenter\Entity\headResult\ResultJson.class
+cn\userCenter\config\shiro\ShiroConfig.class
+cn\userCenter\dao\UserMapper.class

@@ -49,4 +49,22 @@ public interface UserServiceInter {
 	  * @return: UserRole        
 	  */  
 	public List<UserRole> getUserRoleByUserid(int userid);
+
+
+	
+	 /**   
+	  * @Title: getUserOrganByUsernum   
+	  * @Description:   根据用户唯一标示num查询用户          
+	  * @return: UserOrganization        
+	  */  
+	UserOrganization getUserOrganByUsernum(int usernum);
+
+
+	
+	 /**   
+	  * @Title: saveUserServ   
+	  * @Description:  新增用户      
+	  * @return: int        
+	  */  
+	int saveUserServ(UserOrganization user);
 }

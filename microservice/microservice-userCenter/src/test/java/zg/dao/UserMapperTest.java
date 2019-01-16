@@ -32,6 +32,14 @@ public class UserMapperTest {
 		//String userId
 	}
 	
+	//@Test
+	public void findUserByUsernum() {
+		int userNum = 1;
+		UserOrganization u = userMapper.findUserByUsernum(userNum);
+		System.out.println(u);
+	}
+		
+	
 	//单个增加用户
 	//@Test
 	public void saveUser() {		
@@ -45,6 +53,23 @@ public class UserMapperTest {
 				name, parent_id, usernum, user_password, is_parent, note);
 		int i = userMapper.saveUser(u);
 		System.out.println(i);
+	}
+	
+	//单个增加用户,返回id
+	@Test
+	public void saveUserBackId() {		
+		String name = "姜子牙";
+		int parent_id = 3;
+		int usernum = 1004;
+		String user_password = "123";
+		int is_parent = 0; 
+		String note = "辅助";
+		UserOrganization u = new UserOrganization(
+				name, parent_id, usernum, user_password, is_parent, note);
+		//int saveUser = userMapper.saveUser(u);
+		int saveUserBackId = userMapper.saveUserBackId(u);
+		System.out.println(saveUserBackId);
+		System.out.println(u.getOrgid());
 	}
 	
 	//@Test
@@ -72,13 +97,13 @@ public class UserMapperTest {
 	public void modifyUserById() {
 		UserOrganization u2 = new UserOrganization(
 				"小黑", 1, 3, "123456", 1, "dota");
-		u2.setOrgid(13);
-		int i = userMapper.modifyUserById(u2);
-		System.out.println(i);
+//		u2.setOrgid(13);
+//		int i = userMapper.modifyUserById(u2);
+//		System.out.println(i);
 	}
 	
 	//删除用户
-	@Test
+	//@Test
 	public void deleteUserById() {
 		String userId = "13";
 		int i = userMapper.deleteUserById(userId);

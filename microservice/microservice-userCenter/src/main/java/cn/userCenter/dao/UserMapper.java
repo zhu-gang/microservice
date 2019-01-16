@@ -46,8 +46,17 @@ public interface UserMapper {
 	 /** 
 	 * @Title: saveUser 
 	 * @Description: 保存用户信息
+	 * @return: int 返回数据库受影响的条数
 	 */
 	public int saveUser(@Param("userOrgan") UserOrganization userOrgan);
+	
+	 /** 
+	  * @Title: saveUser 
+	  * @Description: 保存用户信息
+	  * @return: int 返回新增数据id
+	  */
+	//public int saveUserBackId(@Param("userOrgan") UserOrganization userOrgan);
+	public int saveUserBackId(UserOrganization userOrgan);
 	
 	
 	 /** 
