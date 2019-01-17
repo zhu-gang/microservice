@@ -67,4 +67,22 @@ public interface UserServiceInter {
 	  * @return: int        
 	  */  
 	int saveUserServ(UserOrganization user);
+
+
+	
+	 /**   
+	  * @Title: saveUserInfoServ   
+	  * @Description:  新增用户信息              
+	  * @return: int   返回数据库受影响的条目            
+	  */  
+	int saveUserInfoServ(UserInfo userInfo);
+
+
+	
+	 /**   
+	  * @Title: getUserAllListServ   
+	  * @Description: 查询所有用户       
+	  * @return: UserOrganization        
+	  */  
+	List<UserOrganization> getUserAllListServ();
 }

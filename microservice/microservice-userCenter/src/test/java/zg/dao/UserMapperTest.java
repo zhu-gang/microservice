@@ -32,7 +32,8 @@ public class UserMapperTest {
 		//String userId
 	}
 	
-	//@Test
+	//根据用户唯一标识num查询用户
+	@Test
 	public void findUserByUsernum() {
 		int userNum = 1;
 		UserOrganization u = userMapper.findUserByUsernum(userNum);
@@ -56,7 +57,7 @@ public class UserMapperTest {
 	}
 	
 	//单个增加用户,返回id
-	@Test
+	//@Test
 	public void saveUserBackId() {		
 		String name = "姜子牙";
 		int parent_id = 3;

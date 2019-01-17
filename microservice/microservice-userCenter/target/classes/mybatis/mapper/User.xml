@@ -18,6 +18,11 @@
 		where usernum = #{userNum}
 	</select>	
 	
+	<!-- 1.3、查询所有用户信息 -->
+	<select id="findUserAll" resultType="cn.zg.springcloud.entities.userCenter.UserOrganization">
+		select * from user_organization
+	</select>	
+	
 	
 	
 	<!-- ===========================2、新增===============================  -->

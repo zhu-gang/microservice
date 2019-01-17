@@ -9,7 +9,7 @@
 	<!-- 1.1、根据id查询用户信息 -->
 	<select id="findUserInfoById" parameterType="int" resultType="cn.zg.springcloud.entities.userCenter.UserInfo">
 		select * from user_info 
-		where usernum = { #userId }
+		where userid = #{ userId }
 	</select>
 	
 	<!-- 1.2、查询所有用户信息 -->
@@ -23,6 +23,7 @@
 		from user_organization o left join user_info i on o.orgid = i.userid
 		where o.usernum = #{usernum}
 	</select>
+	
 	
 	
 	<!-- ===========================2、新增===============================  -->

@@ -1,18 +1,41 @@
 .layui-fluid {
+	/*height: 100vh;*/
 	margin: 0;
 	padding: 0;
 	overflow: auto;
 	background-color: white;
 }
 
-div[class^="col-"] {
-	border: 1px red solid;
+label {
+	margin: 0;
+	padding: 0;
 }
 
-.layui-fluid {
-	height: 100vh;
+div[class^="layui-col-"] {
+	border: 1px white solid; 
+	line-height: 80px;
 }
 
 .layui-row {
-	height: 100vh;
+	
+	text-align: center;
 }
+
+.positionDiv {
+	height: 150px;
+}
+
+.layui-form-item{
+	line-height: 80px;
+}
+
+#login {
+	width: 80px;
+	margin-left: 100px;
+}
+
+#register {
+	width: 80px;
+}
+
+

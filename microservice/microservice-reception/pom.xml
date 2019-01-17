@@ -7,7 +7,7 @@
   </parent>
   <artifactId>microservice-reception</artifactId>
   <description>前台</description>
-<dependencies>
+<dependencies> 
    <dependency><!-- 自己定义的api -->
      <groupId>cn.basic.springcloud</groupId> 
      <artifactId>microservice-api</artifactId>

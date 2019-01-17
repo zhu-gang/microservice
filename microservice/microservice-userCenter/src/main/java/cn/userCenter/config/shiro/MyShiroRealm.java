@@ -57,7 +57,7 @@ public class MyShiroRealm extends AuthorizingRealm {
          *  从数据库获取对应用户名密码的用户
          */
         UserOrganization user = userService.getUserOrganByUsernum(userId);
-		UserInfo userInfo = userService.getUserInfoByUserId(user.getUsernum());
+		UserInfo userInfo = userService.getUserInfoByUserId(user.getOrgid());
 		logger.info("---------------- Shiro 凭证认证--------user-" + user.toString());
 		logger.info("---------------- Shiro 凭证认证--------userInfo-" + userInfo.toString());
 		

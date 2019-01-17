@@ -64,7 +64,7 @@ public class LoginController {
 	@GetMapping( "/{userName}/{userPassword}")
 	public ResultJson<String> loginContr(@PathVariable("userName") @NotBlank String userName,
 			@PathVariable("userPassword") @NotBlank String userPassword){
-		logger.debug("C-loginContr");
+		logger.debug("-------C----------开始登陆-----------");
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(userName.trim(), userPassword.trim());
 		ResultJson<String> resultJson = null;
@@ -97,8 +97,15 @@ public class LoginController {
 	@PostMapping("")
 	public ResultJson<String> registryUserContr(@RequestBody @Valid UserOrganization user){
 		logger.debug("C----registryContr--- user ---" + user);
-		
-		return null;
+		int i = userService.saveUserServ(user);
+		logger.debug("C----注册用户返回值 ---" + i);
+		if( i < 0 ) {
+			return new ResultJson<String>(0, "未知错误", i + "" );
+		}else if( i == 0) {
+			return new ResultJson<String>(0, "新增用户失败 ，插入数据为0", i + "" );
+		}else {
+			return new ResultJson<String>(0, "新增用户成功", i + "" );
+		}
 	}
 	
 	
@@ -109,9 +116,18 @@ public class LoginController {
 	  */  
 	@PostMapping("/userInfo")
 	public ResultJson<String> registryUserInfoContr(@RequestBody @Valid UserInfo userInfo){
-		logger.debug("C----registryUserInfoContr--- userInfo ---" + userInfo);
-		
-		return null;
+		logger.debug("C---- 注册用户信息    ---" + userInfo);
+		int i = userService.saveUserInfoServ(userInfo);
+		if( i < 0 ) {
+			logger.debug("C---- 注册用户信息失败返回值 ---i---" + i);
+			return new ResultJson<String>(0, "未知错误", i + "" );
+		}else if( i == 0) {
+			logger.debug("C---- 注册用户信息失败返回值 ---i---" + i);
+			return new ResultJson<String>(0, "新增用户信息失败 ，插入数据为0", i + "" );
+		}else {
+			logger.debug("C---- 注册用户信息成功返回值 ---i---" + i);
+			return new ResultJson<String>(0, "新增用户成功", i + "" );
+		}
 	}
 		
 }
