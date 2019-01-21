@@ -34,7 +34,7 @@ $(function(){
 	var myChart = echarts.init(document.getElementById('loginNum'));
 	
 	// 指定图表的配置项和数据
-	var yMax = 5;
+	var yMax ;
 	var dataShadow = [];
 	
 	for (var i = 0; i < data.length; i++) {

@@ -45,27 +45,39 @@ public class LoginInfoTest {
 	}
 	
 	//批量插入
-	//@Test
+	@Test
 	public void saveLoginInfoInBatch() {
-		UserLogin userLogin1 = new UserLogin(11,"后裔",1234,"射手",
-				0,new Date(System.currentTimeMillis()));
-		UserLogin userLogin2 = new UserLogin(12,"伽罗",1234,"射手",
-				0,new Date(System.currentTimeMillis()));
-		UserLogin userLogin3 = new UserLogin(13,"小短腿",1234,"射手",
-				0,new Date(System.currentTimeMillis()));
-		UserLogin userLogin4 = new UserLogin(13,"小短腿",1234,"射手",
+//		UserLogin userLogin1 = new UserLogin(11,"后裔",1234,"射手",
+//				0,new Date(System.currentTimeMillis()));
+//		UserLogin userLogin2 = new UserLogin(12,"伽罗",1234,"射手",
+//				0,new Date(System.currentTimeMillis()));
+//		UserLogin userLogin3 = new UserLogin(13,"小短腿",1234,"射手",
+//				0,new Date(System.currentTimeMillis()));
+//		UserLogin userLogin4 = new UserLogin(13,"小短腿",1234,"射手",
+//				1,new Date(System.currentTimeMillis()));
+//		UserLogin userLogin5 = new UserLogin(11,"后裔",1234,"射手",
+//				0,new Date(System.currentTimeMillis()));
+//		UserLogin userLogin6 = new UserLogin(12,"伽罗",1234,"射手",
+//				1,new Date(System.currentTimeMillis()));
+		UserLogin userLogin7 = new UserLogin(101,"甄姬",1235,"法师",
 				1,new Date(System.currentTimeMillis()));
-		UserLogin userLogin5 = new UserLogin(11,"后裔",1234,"射手",
-				0,new Date(System.currentTimeMillis()));
-		UserLogin userLogin6 = new UserLogin(12,"伽罗",1234,"射手",
+		UserLogin userLogin8 = new UserLogin(101,"王昭君",1235,"法师",
+				1,new Date(System.currentTimeMillis()));
+		UserLogin userLogin9 = new UserLogin(101,"妲己",1235,"法师",
+				1,new Date(System.currentTimeMillis()));
+		UserLogin userLogin10 = new UserLogin(101,"上官婉儿 ",1235,"法师",
 				1,new Date(System.currentTimeMillis()));
 		ArrayList<UserLogin> arrayList = new ArrayList<UserLogin>();
-		arrayList.add(userLogin1);
-		arrayList.add(userLogin2);
-		arrayList.add(userLogin3);
-		arrayList.add(userLogin4);
-		arrayList.add(userLogin5);
-		arrayList.add(userLogin6);
+//		arrayList.add(userLogin1);
+//		arrayList.add(userLogin2);
+//		arrayList.add(userLogin3);
+//		arrayList.add(userLogin4);
+//		arrayList.add(userLogin5);
+//		arrayList.add(userLogin6);
+		arrayList.add(userLogin7);
+		arrayList.add(userLogin8);
+		arrayList.add(userLogin9);
+		arrayList.add(userLogin10);
 		List<UserLogin> saveAll = userLoginDao.saveAll(arrayList);
 		System.out.println(saveAll);
 	}
@@ -79,7 +91,7 @@ public class LoginInfoTest {
 		System.out.println(findById);
 	}
 	
-	@Test
+	//@Test
 	public void findLoginInfo() {
 		int i = 0;
 		List<UserLogin> findAllByUseState = userLoginDao.findAllByUseState(i);
