@@ -85,4 +85,15 @@ public interface UserServiceInter {
 	  * @return: UserOrganization        
 	  */  
 	List<UserOrganization> getUserAllListServ();
+
+
+	
+	 /**   
+	  * @Title: deleteUserByNumServ   
+	  * @Description: 根据usernum删除用户            
+	  * @return: int        
+	  */  
+	int deleteUserByNumServ(int usernum);
+
+
 }

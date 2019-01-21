@@ -7,7 +7,7 @@
  */
 
 /*
- * 数据库设计
+ * mysql数据库设计
  */
  //库
  create database if not exists microservice_userManager default charset utf8
@@ -117,19 +117,33 @@
 	)engine=InnoDB default charset=utf8 comment='权限操作关系表'
  
  
-
+/*
+ * mongodb数据库设计
+ */
+1、人员登录信息
+	1.1、     key - value
+		 usernum
+		 username 
+		 orgid
+		 orgName
+		 loginTime
+		 logoutTime
+		 
+2、 
+ 
+ 
  
  /*
   * 模拟数据
   */
   王者荣耀    0
   	射手    1
-  		后羿           1
-  		伽罗           2
-  		小短腿       3
-  		虞姬           4
-  		孙尚香       5
-  		马可波罗   6
+  		后羿           11
+  		伽罗           12
+  		小短腿       13
+  		虞姬           14
+  		孙尚香       15
+  		马可波罗   16
   		
   	法师    2
   		甄姬           101
@@ -150,3 +164,5 @@
   		程咬金        10002
   		项羽            10003
   		廉颇            10004
+  		
+  		

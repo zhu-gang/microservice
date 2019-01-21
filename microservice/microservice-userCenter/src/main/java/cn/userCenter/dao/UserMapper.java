@@ -49,6 +49,14 @@ public interface UserMapper {
 	  * @return: UserOrganization        
 	  */  
 	public List<UserOrganization> findUserAll();
+	
+	
+	 /**   
+	  * @Title: findUsersAndState   
+	  * @Description: 查询所有用户信息和对应的状态       
+	  * @return: List<UserOrganization>        
+	  */  
+	public List<UserOrganization> findUsersAndState();
 		
 	
 	 /** 
@@ -85,6 +93,14 @@ public interface UserMapper {
 	 * @Description: 根据用户id删除用户
 	 */
 	public int deleteUserById(@Param("userid") String userid);
+	
+	
+	 /**   
+	  * @Title: deleteUserByUsernum   
+	  * @Description: 根据usernum删除用户       
+	  * @return: int        
+	  */  
+	public int deleteUserByUsernum(@Param("usernum") int usernum);
 	
 	
 }

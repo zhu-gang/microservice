@@ -103,9 +103,9 @@ function getQueryUrlString( name ) {
     return "请选择";
 }
 
-/*-----------------------------------
-      cookie相关方法
------------------------------------*/
+/*-------------------------------------------------------------------------
+                              cookie相关方法
+--------------------------------------------------------------------------*/
 /**
  * 获得cookie 的值
  */
@@ -259,8 +259,486 @@ var ajaxByGet = function(url, data, successGetMethod, requestType){
 	});
 }
 
+
+
+
+
+
+/*-------------------------------------------------------------------------
+                              ajax 相关方法
+--------------------------------------------------------------------------*/
 /**
- * post方式的ajax请求(同步)-重写
+ * ajax静态代理proxy
+ * @param {} url
+ * @param {} data
+ * @param {} successPostMethod
+ * @param {} requestType
+ */
+function ajax( t, u, d, f, a ){
+	console.log( 'ajax代理proxy……' );
+	switch( arguments.length ){
+		case 4:
+			switch( t.toUpperCase() ){
+				case 'GET':
+					gAjax( u, d, f );
+					break;
+				case 'POST':
+					pAjax( u, d, f );
+					break;
+				case 'PUT':
+					puAjax( u, d, f );
+					break;
+				case 'DELETE':
+					break;
+			}
+			break;
+		case 5:
+			switch( t.toUpperCase() ){
+			case 'GET':
+				gAjax1( u, d, f, a );
+				break;
+			case 'POST':
+				pAjax1( u, d, f, a );
+				break;
+			case 'PUT':
+				puAjax1( u, d, f, a );
+				break;
+			case 'DELETE':
+				break;
+			}
+			break;
+	}
+}
+
+
+/**
+ * ajax-get同步访问模板
+ */
+function gAjax( url, data, succFuncName ){
+	console.log( 'ajax-gAjax同步访问模板……' );
+	$.ajax({
+	     type : "GET",
+	     url : url,
+	     data : data,
+	     async : false, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				layer.msg( jsonData.message, {icon:1} );
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-get异步访问模板
+ */
+function gAjax1( url, data, succFuncName, requestType){
+	console.log( 'ajax-gAjax1异步访问模板……' );
+	$.ajax({
+	     type : "GET",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				//eval( succFuncName + "(data)" );
+	 				succFuncName(data);
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-post异步访问模板
+ */
+function pAjax( url, data, succFuncName ){
+	console.log( 'ajax-pAjax访问模板……' );
+	$.ajax({
+	     type : "POST",
+	     url : url,
+	     data : data,
+	     async : true, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				console.log( '111111111111' );
+	 				succFuncName( data );
+	 				console.log( '222222222222' );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-post同步访问模板
+ */
+function pAjax1( url, data, succFuncName, requestType ){
+	console.log( 'ajax-pAjax1访问模板……' );
+	$.ajax({
+	     type : "POST",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-put异步访问模板
+ */
+function puAjax( url, data, succFuncName ){
+	console.log( 'ajax-puAjax访问模板……' );
+	$.ajax({
+	     type : "PUT",
+	     url : url,
+	     data : data,
+	     async : true, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-put同步访问模板
+ */
+function puAjax1( url, data, succFuncName, requestType ){
+	console.log( 'ajax-puAjax1访问模板……' );
+	$.ajax({
+	     type : "PUT",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "application/x-www-form-urlencoded",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+
+/**
+ * contentType为json串
+ * @param {} t
+ * @param {} u
+ * @param {} d
+ * @param {} f
+ * @param {} a
+ */
+function ajaxByJson( t, u, d, f, a ){
+	console.log( 'ajax代理proxy……' );
+	switch( arguments.length ){
+		case 4:
+			switch( t.toUpperCase() ){
+				case 'GET':
+					gAjaxByJson( u, d, f );
+					break;
+				case 'POST':
+					pAjaxByJson( u, d, f );
+					break;
+				case 'PUT':
+					puAjaxByJson( u, d, f );
+					break;
+				case 'DELETE':
+					break;
+			}
+			break;
+		case 5:
+			switch( t.toUpperCase() ){
+			case 'GET':
+				gAjax1ByJson( u, d, f, a );
+				break;
+			case 'POST':
+				pAjax1ByJson( u, d, f, a );
+				break;
+			case 'PUT':
+				puAjax1ByJson( u, d, f, a );
+				break;
+			case 'DELETE':
+				break;
+			}
+			break;
+	}
+}
+
+
+/**
+ * ajax-get同步访问模板
+ */
+function gAjaxByJson( url, data, succFuncName ){
+	console.log( 'ajax-gAjax同步访问模板……' );
+	$.ajax({
+	     type : "GET",
+	     url : url,
+	     data : data,
+	     async : false, 
+	     cache : true,
+	     contentType : "application/json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				layer.msg( jsonData.message, {icon:1} );
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-get异步访问模板
+ */
+function gAjax1ByJson( url, data, succFuncName, requestType){
+	console.log( 'ajax-gAjax1异步访问模板……' );
+	$.ajax({
+	     type : "GET",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "application/json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-post异步访问模板
+ */
+function pAjaxByJson( url, data, succFuncName ){
+	console.log( 'ajax-pAjax访问模板……' );
+	$.ajax({
+	     type : "POST",
+	     url : url,
+	     data : data,
+	     async : true, 
+	     cache : true,
+	     contentType : "application/json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				console.log( '111111111111' );
+	 				succFuncName( data );
+	 				console.log( '222222222222' );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-post同步访问模板
+ */
+function pAjax1ByJson( url, data, succFuncName, requestType ){
+	console.log( 'ajax-pAjax1访问模板……' );
+	$.ajax({
+	     type : "POST",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-put异步访问模板
+ */
+function puAjaxByJson( url, data, succFuncName ){
+	console.log( 'ajax-puAjax访问模板……' );
+	$.ajax({
+	     type : "PUT",
+	     url : url,
+	     data : data,
+	     async : true, 
+	     cache : true,
+	     contentType : "application/json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败：');
+	     }		       
+	});
+}
+
+/**
+ * ajax-put同步访问模板
+ */
+function puAjax1ByJson( url, data, succFuncName, requestType ){
+	console.log( 'ajax-puAjax1访问模板……' );
+	$.ajax({
+	     type : "PUT",
+	     url : url,
+	     data : data,
+	     async : requestType || false, 
+	     cache : true,
+	     contentType : "application/json",
+	     dataType : "json",
+	     success : function( jsonData ){
+	 		if( jsonData ){
+	 			var data = jsonData.data;
+	 			if( jsonData.state == 0 && data ){
+	 				eval( succFuncName + "(data)" );
+	 			}else{
+	 				layer.msg( jsonData.message, {icon:2} );
+	 			}		
+	 		}else{
+	 			layer.msg( '请求失败', {icon:2} );
+	 		}		
+	     },
+	     error:function(){
+	    	 layer.msg('请求失败');
+	     }		       
+	});
+}
+
+
+/**
+ * post方式的ajax请求(同步)-已过时
  * @type 
  */
 var ajaxByPost = function(url, data, successPostMethod, requestType){
@@ -286,7 +764,7 @@ var ajaxByPost = function(url, data, successPostMethod, requestType){
 }
 
 /**
- *put方式的ajax请求
+ * put方式的ajax请求
  */
 var ajaxByPut = function(url, data, successPutMethod ){
 	data['_method'] = 'put';

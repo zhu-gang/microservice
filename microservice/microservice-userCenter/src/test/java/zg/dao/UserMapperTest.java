@@ -33,11 +33,18 @@ public class UserMapperTest {
 	}
 	
 	//根据用户唯一标识num查询用户
-	@Test
+	//@Test
 	public void findUserByUsernum() {
 		int userNum = 1;
 		UserOrganization u = userMapper.findUserByUsernum(userNum);
 		System.out.println(u);
+	}
+	
+	//查询所有用户信息和对应的状态
+	@Test
+	public void findUsersAndState() {
+		List<UserOrganization> findUsersAndState = userMapper.findUsersAndState();
+		System.out.println(findUsersAndState);
 	}
 		
 	
@@ -46,7 +53,7 @@ public class UserMapperTest {
 	public void saveUser() {		
 		String name = "小小";
 		int parent_id = 0;
-		int usernum = 1;
+		int usernum = 134;
 		String user_password = "123";
 		int is_parent = 1; 
 		String note = "dota";
@@ -59,12 +66,12 @@ public class UserMapperTest {
 	//单个增加用户,返回id
 	//@Test
 	public void saveUserBackId() {		
-		String name = "姜子牙";
-		int parent_id = 3;
-		int usernum = 1004;
+		String name = "王者荣耀";
+		int parent_id = 0;
+		int usernum = -1;
 		String user_password = "123";
 		int is_parent = 0; 
-		String note = "辅助";
+		String note = "王者荣耀";
 		UserOrganization u = new UserOrganization(
 				name, parent_id, usernum, user_password, is_parent, note);
 		//int saveUser = userMapper.saveUser(u);
@@ -77,13 +84,13 @@ public class UserMapperTest {
 	//批量增加用户
 	public void saveUserByBatch() {
 		UserOrganization u1 = new UserOrganization(
-				"娜迦", 1, 2, "123", 1, "dota");
+				"射手", 0, 1, "", 1, "dota");
 		UserOrganization u2 = new UserOrganization(
-				"小黑", 1, 3, "123", 1, "dota");
+				"法师", 0, 2, "", 1, "dota");
 		UserOrganization u3 = new UserOrganization(
-				"冰女", 1, 4, "123", 1, "dota");
+				"辅助", 0, 3, "", 1, "dota");
 		UserOrganization u4 = new UserOrganization(
-				"亚瑟", 1, 5, "123", 1, "dota");
+				"坦克", 0, 4, "", 1, "dota");
 		ArrayList<UserOrganization> list = new ArrayList<UserOrganization>();
 		list.add(u1);
 		list.add(u2);
@@ -103,13 +110,21 @@ public class UserMapperTest {
 //		System.out.println(i);
 	}
 	
-	//删除用户
+	//根据userId删除用户
 	//@Test
 	public void deleteUserById() {
 		String userId = "13";
 		int i = userMapper.deleteUserById(userId);
 		System.out.println(i);
 		
+	}
+	
+	//根据usernum删除用户
+	//@Test
+	public void deleteUserByNum() {
+		int usernum = 134;
+		int i = userMapper.deleteUserByUsernum(usernum);
+		System.out.println(i);		
 	}
 	
 }

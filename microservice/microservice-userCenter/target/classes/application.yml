@@ -8,13 +8,19 @@ mybatis:
   - classpath:mybatis/mapper/**/*.xml #mapper映射文件
     
 spring:
-   application:
-    name: userCenter 
-   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/microservice_userManager?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: soa
-    password: soa123
+  application:
+     name: userCenter 
+  datasource:
+     driver-class-name: com.mysql.jdbc.Driver
+     url: jdbc:mysql://localhost:3306/microservice_userManager?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+     username: soa
+     password: soa123
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test 
+    
+    
+ 
     
 eureka:
   client: #客户端注册进eureka服务列表内
@@ -27,10 +33,10 @@ eureka:
 info:
   app.name: microservicecloud
   company.name: www.baidu.com
-  build.artifactId: microservice-userCenter
-  build.version: 0.0.1-SNAPSHOT
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
       
-      
+
       
  
 

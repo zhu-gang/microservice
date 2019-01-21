@@ -162,12 +162,32 @@ public class userService implements UserServiceInter{
 		logger.debug("---S----查询所有 用户------");
 		List<UserOrganization> userAll = null;
 		try {
-			userAll = userMapper.findUserAll();
+			userAll = userMapper.findUsersAndState();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 		return userAll;
+	}
+	
+	
+	
+	 /**   
+	  * @Title: deleteUserByNumServ   
+	  * @Description:根据usernum删除用户        
+	  * @return: int        
+	  */  
+	@Override
+	public int deleteUserByNumServ(int usernum) {
+		logger.debug("---S------根据usernum删除用户 ------");
+		int i ;
+		try {
+			i = userMapper.deleteUserByUsernum(usernum);			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return i;
 	}
 	
 }

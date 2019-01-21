@@ -1,5 +1,7 @@
 zg\controller\LoginControTest.class
-zg\dao\UserInfoTest.class
-zg\dao\UserAuthMapperTest.class
+zg\dao\mongo\LoginInfoTest.class
 zg\dao\UserMapperTest.class
+zg\dao\UserInfoTest.class
+zg\controller\UserControTest.class
+zg\dao\UserAuthMapperTest.class
 zg\dao\UserRoleMapperTest.class

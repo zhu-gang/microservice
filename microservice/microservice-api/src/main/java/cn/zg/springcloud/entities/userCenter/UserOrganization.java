@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -50,12 +51,12 @@ public class UserOrganization implements Serializable{
 	
 	private Integer parent_id;
 	
-	@NotBlank(message="用户标识不能为空")
+	@NotNull(message="用户标识不能为空")
 	private Integer usernum;
 	
 	@NotBlank(message="用户密码不能为空")
 	private String user_password;
-	private Integer is_parent;
+	private Integer is_parent; 
 	private String note;
 	private Integer remark1;
 	private String remark2;

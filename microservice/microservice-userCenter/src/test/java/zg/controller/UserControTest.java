@@ -41,13 +41,27 @@ public class UserControTest {
 	
 	 /**   
 	  * @Title: getUserAllList   
-	  * @Description:        
+	  * @Description:  获取所有用户      
 	  * @return: UserTableJson<List<UserOrganization>>        
 	  */  
-	@Test
+	//@Test
 	public void getUserAllList() {
 		UserTableJson<List<UserOrganization>> userAllList = userController.getUserAllList();
 		System.out.println(userAllList);
 	}
+	
+	
+	 /**   
+	  * @Title: deleteUserContro   
+	  * @Description:  根据usernum删除用户          
+	  * @return: void        
+	  */  
+	@Test
+	public void deleteUserContro(){
+		int usernum = 134;
+		ResultJson<String> deleteUserContro = userController.deleteUserContro(usernum);
+		System.out.println(deleteUserContro);
+	}
+	
 	
 }
